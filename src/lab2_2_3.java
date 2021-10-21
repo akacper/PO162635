@@ -9,15 +9,9 @@ public class lab2_2_3 {
         for (int i = 0; i < n; i++){
             System.out.print("Podaj element " + (i+1) + ": ");
             double next = Obj.nextDouble();
-            if (next > 0){
-                sumadod += 1;
-            }
-            else if (next < 0){
-                sumauj += 1;
-            }
-            else {
-                sumazer += 1;
-            }
+            if (next > 0) sumadod += 1;
+            else if (next < 0) sumauj += 1;
+            else sumazer += 1;
         }
             System.out.println("Dodatnich: " + sumadod + " Ujemnych: " + sumauj + " Zera: " + sumazer);
     }
