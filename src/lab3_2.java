@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Random;
 
 public class lab3_2 {
     public static void main(String[] args) {
@@ -30,24 +29,25 @@ public class lab3_2 {
         System.out.println("Dlugosc maksymalnego ciagu dodatnich: " + dlugoscMaksymalnegoCiaguDodatnich(lista));
         // f
         signum(lista);
-        // g
-        odwrocFragment(lista, 2, 4);
+        // g (aby dzialalo z podanymi argumentami nalezy wygenerowac tablice co najmniej 6-elementowa)
+        odwrocFragment(lista, 2, 5);
+        odwrocFragment2(lista, 2, 5);
     }
 
-    public static void generuj(int tab[], int n, int min, int max){
+    public static void generuj(int[] tab, int n, int min, int max){
         for (int i = 0; i < n; i++){
             tab[i] = (int)(Math.random() * (max - min) + min);
         }
     }
 
-    public static void wypisz(int tab[]){
+    public static void wypisz(int[] tab){
         for (int i = 0; i < tab.length; i++){
             System.out.print(tab[i] + " ");
         }
         System.out.println();
     }
 
-    public static int ileParzystych(int tab[]) {
+    public static int ileParzystych(int[] tab) {
         int suma = 0;
         for (int i = 0; i < tab.length; i++){
             if (tab[i] % 2 == 0) suma++;
@@ -55,7 +55,7 @@ public class lab3_2 {
         return suma;
     }
 
-    public static int ileNieparzystych(int tab[]) {
+    public static int ileNieparzystych(int[] tab) {
         int suma = 0;
         for (int i = 0; i < tab.length; i++){
             if (tab[i] % 2 != 0) suma++;
@@ -63,7 +63,7 @@ public class lab3_2 {
         return suma;
     }
 
-    public static int ileDodatnich(int tab[]) {
+    public static int ileDodatnich(int[] tab) {
         int suma = 0;
         for (int i = 0; i < tab.length; i++){
             if (tab[i] > 0) suma++;
@@ -71,7 +71,7 @@ public class lab3_2 {
         return suma;
     }
 
-    public static int ileUjemnych(int tab[]) {
+    public static int ileUjemnych(int[] tab) {
         int suma = 0;
         for (int i = 0; i < tab.length; i++){
             if (tab[i] < 0) suma++;
@@ -79,7 +79,7 @@ public class lab3_2 {
         return suma;
     }
 
-    public static int ileZerowych(int tab[]) {
+    public static int ileZerowych(int[] tab) {
         int suma = 0;
         for (int i = 0; i < tab.length; i++){
             if (tab[i] == 0) suma++;
@@ -87,7 +87,7 @@ public class lab3_2 {
         return suma;
     }
 
-    public static int ileMaksymalnych(int tab[]) {
+    public static int ileMaksymalnych(int[] tab) {
         int suma = 1;
         int max = tab[0];
         for (int i = 1; i < tab.length; i++){
@@ -100,7 +100,7 @@ public class lab3_2 {
         return suma;
     }
 
-    public static int sumaDodatnich(int tab[]) {
+    public static int sumaDodatnich(int[] tab) {
         int suma = 0;
         for (int i = 0; i < tab.length; i++){
             if (tab[i] > 0) suma += tab[i];
@@ -108,7 +108,7 @@ public class lab3_2 {
         return suma;
     }
 
-    public static int sumaUjemnych(int tab[]) {
+    public static int sumaUjemnych(int[] tab) {
         int suma = 0;
         for (int i = 0; i < tab.length; i++){
             if (tab[i] < 0) suma += tab[i];
@@ -116,7 +116,7 @@ public class lab3_2 {
         return suma;
     }
 
-    public static int dlugoscMaksymalnegoCiaguDodatnich(int tab[]) {
+    public static int dlugoscMaksymalnegoCiaguDodatnich(int[] tab) {
         int dlugosc = 0;
         int najdluzsza = 0;
         for (int i = 0; i < tab.length; i++){
@@ -129,7 +129,7 @@ public class lab3_2 {
         return najdluzsza;
     }
 
-    public static void signum(int tab[]) {
+    public static void signum(int[] tab) {
         int[] newtab = new int[tab.length];
         for (int i = 0; i < tab.length; i++){
             if (tab[i] > 0) newtab[i] = 1;
@@ -139,13 +139,35 @@ public class lab3_2 {
         wypisz(newtab);
     }
 
-    public static void odwrocFragment(int tab[], int lewy, int prawy) {
+    public static void odwrocFragment(int[] tab, int lewy, int prawy) {
         if (lewy >= tab.length || lewy < 1 || prawy >= tab.length || prawy < 1) return;
-        int temp = 0;
-        for (int i = 0; i <= prawy; i++){
-            temp = tab[i+lewy];
-            // do zrobienia
+        int[] newtab = new int [tab.length];
+        int odw = 0;
+        for (int i = 0; i < tab.length; i++){
+            if (i >= lewy && i <= prawy){
+                int temp = tab[prawy - odw];
+                newtab[i] = tab[prawy - odw];
+                newtab[lewy + odw] = temp;
+                odw++;
+                }
+            else newtab[i] = tab[i];
+
         }
-        wypisz(tab);
+        wypisz(newtab);
+    }
+
+    // drugie rozwiazanie uzywajac tab.clone()
+    public static void odwrocFragment2(int[] tab, int lewy, int prawy) {
+        if (lewy >= tab.length || lewy < 1 || prawy >= tab.length || prawy < 1) return;
+        int[] newtab = tab.clone();
+        int iter = 0;
+        for (int i = lewy; i < prawy; i++){
+            if (iter >= prawy/2) break;
+            int temp = newtab[lewy+iter];
+            newtab[lewy+iter] = newtab[prawy-iter];
+            newtab[prawy-iter] = temp;
+            iter++;
+        }
+        wypisz(newtab);
     }
 }
