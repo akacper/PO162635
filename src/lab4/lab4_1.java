@@ -2,8 +2,6 @@ package lab4;
 
 //import java.util.Scanner;
 
-import java.util.Locale;
-
 public class  lab4_1 {
     public static void main(String[] args){
 //        Scanner Obj = new Scanner(System.in);
@@ -24,7 +22,7 @@ public class  lab4_1 {
         // e
         wypisz(where("siema123siesiema", "siema"));
         // f
-        System.out.println(change("1Siema123"));
+        System.out.println(change("Siema123"));
         // g
         System.out.println(nice("10000"));
         // h
@@ -105,7 +103,6 @@ public class  lab4_1 {
                 temp.append(str.charAt(i));
                 if (licz % 3 == 0 && i != 0) temp.append("'");
                 licz++;
-
             }
 
             StringBuffer odwroc = new StringBuffer();
@@ -125,7 +122,6 @@ public class  lab4_1 {
                 temp.append(str.charAt(i));
                 if (licz % n == 0 && i != 0) temp.append(znak);
                 licz++;
-
             }
 
             StringBuffer odwroc = new StringBuffer();
