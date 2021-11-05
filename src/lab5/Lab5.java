@@ -66,7 +66,7 @@ public class Lab5 {
     public static ArrayList<Integer> mergeSorted(ArrayList<Integer> a, ArrayList<Integer> b)
     {
         ArrayList<Integer> newList = new ArrayList<>();
-        newList = merge(a,b);
+        newList = append(a,b);
         Collections.sort(newList);
         return newList;
     }
