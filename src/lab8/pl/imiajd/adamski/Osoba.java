@@ -36,5 +36,4 @@ abstract class Osoba
         if (plec) return "kobieta";
         return "mezczyzna";
     }
-
 }

@@ -23,7 +23,7 @@ public abstract class Instrument {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + ", producent: " + this.producent +
-                ", rok produkcji: " + this.rokProdukcji.getYear();
+        return this.getClass().getSimpleName() + ", producent: " + this.getProducent() +
+                ", rok produkcji: " + this.getRokProdukcji();
     }
 }

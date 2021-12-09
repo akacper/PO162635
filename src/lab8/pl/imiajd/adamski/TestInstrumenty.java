@@ -1,7 +1,6 @@
 package lab8.pl.imiajd.adamski;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 
 public class TestInstrumenty {
     public static void main(String[] args) {
@@ -17,7 +16,6 @@ public class TestInstrumenty {
         for(Instrument i: orkiestra) {
                 System.out.println(i.dzwiek());
                 System.out.println(i);
-            }
         }
-
     }
+}
