@@ -1,0 +1,5 @@
+Po cztery uruchomienia programów
+HashSet: 16, 15, 6, 15 [milisekund]
+TreeSet: 22, 16, 31, 38 [milisekund]
+
+HashSet wydaje się być nieco szybszy w tym programie.
